@@ -1,0 +1,285 @@
+/* ==============================
+   Epistolary Authentication Page
+   ============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family: "Georgia", serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(rgba(245,238,225,.75),
+    rgba(245,238,225,.75)),
+    url("https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?q=80&w=1600&auto=format&fit=crop");
+
+    background-size:cover;
+    background-position:center;
+
+}
+
+.background-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at center,
+    rgba(255,255,255,.15),
+    rgba(0,0,0,.25));
+
+}
+
+.paper-card{
+
+    position:relative;
+
+    z-index:5;
+
+    width:420px;
+
+    max-width:90%;
+
+    padding:40px;
+
+    background:#fffdf8;
+
+    border:2px solid #7a4f2a;
+
+    border-radius:10px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.logo{
+
+    font-size:55px;
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+h1{
+
+    text-align:center;
+
+    color:#5a2d0c;
+
+    font-size:38px;
+
+    letter-spacing:2px;
+
+}
+
+h2{
+
+    text-align:center;
+
+    margin-top:5px;
+
+    font-size:18px;
+
+    color:#7a4f2a;
+
+}
+
+.subtitle{
+
+    text-align:center;
+
+    margin-top:12px;
+
+    margin-bottom:30px;
+
+    color:#777;
+
+    font-style:italic;
+
+}
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:20px;
+
+}
+
+.input-group label{
+
+    margin-bottom:8px;
+
+    font-weight:bold;
+
+    color:#5d4037;
+
+}
+
+.input-group input,
+.input-group select{
+
+    padding:12px;
+
+    border-radius:8px;
+
+    border:1px solid #cbb79c;
+
+    background:#faf7f0;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+.input-group input:focus,
+.input-group select:focus{
+
+    outline:none;
+
+    border-color:#8b5a2b;
+
+    box-shadow:0 0 10px rgba(139,90,43,.3);
+
+}
+
+button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:#8b5a2b;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:#6d431f;
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:translateY(1px);
+
+}
+
+.switchMode{
+
+    margin-top:25px;
+
+    text-align:center;
+
+}
+
+#switchText{
+
+    color:#666;
+
+}
+
+#switchButton{
+
+    width:auto;
+
+    margin-top:10px;
+
+    padding:0;
+
+    border:none;
+
+    background:none;
+
+    color:#8b5a2b;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+}
+
+#switchButton:hover{
+
+    text-decoration:underline;
+
+    color:#5d4037;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+#statusMessage{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    min-height:22px;
+
+    font-weight:bold;
+
+    color:#8b0000;
+
+}
+
+/* Mobile */
+
+@media(max-width:500px){
+
+.paper-card{
+
+    padding:25px;
+
+}
+
+h1{
+
+    font-size:30px;
+
+}
+
+}

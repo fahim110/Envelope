@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Epistolary | Central Post Office</title>
+
+<link rel="stylesheet" href="css/auth.css">
+
+
+</head>
+
+<body>
+
+<div class="background-overlay"></div>
+
+<div class="paper-card">
+
+    <div class="logo">
+
+        ✉
+
+    </div>
+
+    <h1>Epistolary</h1>
+
+    <h2>Central Post Office</h2>
+
+    <p class="subtitle">
+        Every Letter Has A Story
+    </p>
+
+    <form id="authForm">
+
+        <div class="input-group registerOnly hidden">
+
+            <label>Postal Handle</label>
+
+            <input
+            id="username"
+            type="text"
+            placeholder="mail_pirate99">
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>University Email</label>
+
+            <input
+            id="email"
+            type="email"
+            placeholder="you@g.bracu.ac.bd"
+            required>
+
+        </div>
+
+
+        <div class="input-group">
+
+            <label>Password</label>
+
+            <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            required>
+
+        </div>
+
+
+        <div class="input-group registerOnly hidden">
+
+            <label>Current Floor</label>
+
+            <select id="floor">
+
+                <option value="1">Floor 1</option>
+                <option value="2">Floor 2</option>
+                <option value="3">Floor 3</option>
+                <option value="4">Floor 4</option>
+                <option value="5">Floor 5</option>
+                <option value="6">Floor 6</option>
+                <option value="7">Floor 7</option>
+                <option value="8">Floor 8</option>
+                <option value="9">Floor 9</option>
+                <option value="10">Floor 10</option>
+                <option value="11">Floor 11</option>
+                <option value="12">Floor 12</option>
+
+            </select>
+
+        </div>
+
+
+        <button type="submit" id="submitBtn">
+            Enter Post Office
+        </button>
+
+    </form>
+
+    <p id="statusMessage"></p>
+
+    <div class="switchMode">
+
+        <span id="switchText">
+
+            New Courier?
+
+        </span>
+
+        <button id="switchButton">
+
+            Create Account
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/auth.js"></script>
+
+</body>
+</html>
