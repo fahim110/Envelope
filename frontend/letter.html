@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Write Letter | Envelope</title>
+
+    <link rel="stylesheet" href="css/letter.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>✉ Write a Letter</h1>
+
+    <p class="subtitle">
+        Every letter has a story.
+    </p>
+
+    <form id="letterForm">
+
+        <!-- Recipient -->
+
+        <div class="input-group">
+
+            <label>Recipient</label>
+
+            <input
+                type="text"
+                id="recipient"
+                placeholder="Search by Postal Handle">
+
+        </div>
+
+        <!-- Title -->
+
+        <div class="input-group">
+
+            <label>Letter Title</label>
+
+            <input
+                type="text"
+                id="title"
+                maxlength="150"
+                placeholder="A small title">
+
+        </div>
+
+        <!-- Body -->
+
+        <div class="input-group">
+
+            <label>Letter</label>
+
+            <textarea
+                id="body"
+                rows="12"
+                placeholder="Dear friend..."></textarea>
+
+            <div class="counter">
+
+                <span id="wordCount">
+
+                    0 / 300 Words
+
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- Stamp -->
+
+        <div class="input-group">
+
+            <label>Stamp</label>
+
+            <select id="stamp">
+
+                <option>Classic Envelope</option>
+
+            </select>
+
+        </div>
+
+        <!-- Polaroid -->
+
+        <div class="input-group">
+
+            <label>Optional Polaroid</label>
+
+            <input
+                type="file"
+                id="photo"
+                accept="image/png,image/jpeg,image/webp">
+
+        </div>
+
+        <!-- Anonymous -->
+
+        <div class="checkbox">
+
+            <input
+                type="checkbox"
+                id="anonymous">
+
+            <label for="anonymous">
+
+                Send Anonymously
+
+            </label>
+
+        </div>
+
+        <!-- Buttons -->
+
+        <div class="buttons">
+
+            <button
+                type="button"
+                id="draftBtn">
+
+                Save Draft
+
+            </button>
+
+            <button
+                type="submit"
+                id="continueBtn">
+
+                Proceed to Central Post Office
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="js/letter.js"></script>
+
+</body>
+
+</html>

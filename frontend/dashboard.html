@@ -3,12 +3,12 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Epistolary Dashboard</title>
+<title>Envelope Dashboard</title>
 
-    <link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 
@@ -16,29 +16,54 @@
 
 <div class="container">
 
-    <h1>✉ Epistolary</h1>
+    <h1>✉ Envelope</h1>
 
     <h2>Central Post Office</h2>
 
-    <hr>
+    <p id="welcomeText">Loading...</p>
 
-    <h3 id="welcomeText">
-        Loading...
-    </h3>
+    <div class="stats">
 
-    <div class="card">
-        <h3>🪙 Postal Coins</h3>
-        <p id="coins">...</p>
+        <div class="card">
+
+            <h3>🪙 Postal Coins</h3>
+
+            <p id="coins">...</p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>⭐ Reputation</h3>
+
+            <p id="reputation">...</p>
+
+        </div>
+
+        <div class="card">
+
+            <h3>🏢 Current Floor</h3>
+
+            <p id="floor">...</p>
+
+        </div>
+
     </div>
 
-    <div class="card">
-        <h3>⭐ Reputation</h3>
-        <p id="reputation">...</p>
-    </div>
+    <div class="menu">
 
-    <div class="card">
-        <h3>🏢 Current Floor</h3>
-        <p id="floor">...</p>
+        <a href="letter.html" class="menuBtn">
+            ✉ Write Letter
+        </a>
+
+        <button class="menuBtn" disabled>
+            📥 Inbox (Coming Soon)
+        </button>
+
+        <button class="menuBtn" disabled>
+            📤 Sent Letters (Coming Soon)
+        </button>
+
     </div>
 
     <button id="logoutBtn">

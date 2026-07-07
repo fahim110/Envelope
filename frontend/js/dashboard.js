@@ -47,51 +47,14 @@ async function loadDashboard() {
     // Profile doesn't exist yet
     // -----------------------------------
 
-    if (error || !profile) {
+    if (error) {
 
-        const username =
-            user.user_metadata.username || "Courier";
-
-        const floor =
-            user.user_metadata.current_floor || 1;
-
-        const { error: insertError } =
-            await window.supabaseClient
-
-                .from("profiles")
-
-                .insert({
-
-                    id: user.id,
-
-                    username: username,
-
-                    current_floor: floor
-
-                });
-
-        if (insertError) {
-
-            alert(insertError.message);
-
-            return;
-
-        }
-
-        // Reload profile
-
-        const result = await window.supabaseClient
-
-            .from("profiles")
-
-            .select("*")
-
-            .eq("id", user.id)
-
-            .single();
-
-        profile = result.data;
-
+        alert("Profile not found.");
+    
+        console.error(error);
+    
+        return;
+    
     }
 
     // -----------------------------
@@ -101,11 +64,9 @@ async function loadDashboard() {
     welcomeText.textContent =
         `Welcome back, ${profile.username}!`;
 
-    coinsText.textContent =
-        profile.currency_balance;
-
-    reputationText.textContent =
-        profile.sender_reputation_score;
+    coinsText.textContent =profile.coins;
+    
+    reputationText.textContent =profile.reputation;
 
     floorText.textContent =
         profile.current_floor;

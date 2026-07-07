@@ -259,8 +259,10 @@ async function loginUser(){
 
     catch(err){
 
-        showStatus(err.message);
-
+        console.error(err);
+    
+        showStatus(JSON.stringify(err));
+    
     }
 
     finally{
