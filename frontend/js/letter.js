@@ -95,19 +95,99 @@ updateCounter();
 
 
 // =======================================
-// Temporary Buttons
+// Save Draft
 // =======================================
 
-draftBtn.addEventListener("click",()=>{
+draftBtn.addEventListener("click", saveDraft);
 
-    alert("Draft system coming next.");
-
-});
-
-form.addEventListener("submit",(e)=>{
+form.addEventListener("submit", async (e) => {
 
     e.preventDefault();
 
-    alert("Central Post Office workflow coming next.");
+    const success = await saveDraft();
+
+    if(success){
+
+        window.location.href = "deposit.html";
+
+    }
 
 });
+
+async function saveDraft(){
+
+    const {
+
+        data:{session}
+
+    } = await window.supabaseClient.auth.getSession();
+
+    // Find recipient
+
+    const {
+
+        data:recipient,
+
+        error:recipientError
+
+    } = await window.supabaseClient
+
+    .from("profiles")
+
+    .select("id")
+
+    .eq("username",recipientInput.value.trim())
+
+    .single();
+
+    if(recipientError){
+
+        alert("Recipient not found.");
+
+        return false;
+
+    }
+
+    const {
+
+        error
+
+    } = await window.supabaseClient
+
+    .from("letters")
+
+    .insert({
+
+        sender_id:session.user.id,
+
+        recipient_id:recipient.id,
+
+        title:titleInput.value.trim(),
+
+        body:bodyInput.value.trim(),
+
+        status:"draft",
+
+        is_anonymous:document.getElementById("anonymous").checked,
+
+        has_attachment:document.getElementById("photo").files.length>0
+
+    });
+
+    if(error){
+
+        alert(error.message);
+
+        return false;
+
+    }
+
+    alert("Draft saved.");
+
+    form.reset();
+
+    updateCounter();
+
+    return true;
+
+}
