@@ -17,6 +17,10 @@ const draftBtn = document.getElementById("draftBtn");
 
 const continueBtn = document.getElementById("continueBtn");
 
+const anonymous = document.getElementById("anonymous");
+
+const photo = document.getElementById("photo");
+
 const MAX_WORDS = 300;
 
 // =======================================
@@ -98,29 +102,61 @@ updateCounter();
 // Save Draft
 // =======================================
 
-draftBtn.addEventListener("click", saveDraft);
+draftBtn.addEventListener("click", async () => {
 
-form.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
-
-    const success = await saveDraft();
+    const success = await saveDraft(false);
 
     if(success){
 
-        window.location.href = "deposit.html";
+        alert("Draft saved successfully.");
 
     }
 
 });
 
-async function saveDraft(){
+form.addEventListener("submit", async (e)=>{
+
+    e.preventDefault();
+
+    const letterId = await saveDraft(true);
+
+    if(letterId){
+
+        window.location.href = `qr.html?letter=${letterId}`;
+
+    }
+
+});
+
+// =======================================
+
+async function saveDraft(goToDrafts){
 
     const {
 
         data:{session}
 
     } = await window.supabaseClient.auth.getSession();
+
+    // Check draft count only for NEW letters
+
+    const {count} = await window.supabaseClient
+
+        .from("letters")
+
+        .select("*",{count:"exact",head:true})
+
+        .eq("sender_id",session.user.id)
+
+        .eq("status","draft");
+
+    if(count>=5){
+
+        alert("Maximum 5 drafts allowed.");
+
+        return data.id;
+
+    }
 
     // Find recipient
 
@@ -132,13 +168,13 @@ async function saveDraft(){
 
     } = await window.supabaseClient
 
-    .from("profiles")
+        .from("profiles")
 
-    .select("id")
+        .select("id")
 
-    .eq("username",recipientInput.value.trim())
+        .eq("username",recipientInput.value.trim())
 
-    .single();
+        .single();
 
     if(recipientError){
 
@@ -150,43 +186,51 @@ async function saveDraft(){
 
     const {
 
+        data,
+    
         error
-
+    
     } = await window.supabaseClient
-
-    .from("letters")
-
-    .insert({
-
-        sender_id:session.user.id,
-
-        recipient_id:recipient.id,
-
-        title:titleInput.value.trim(),
-
-        body:bodyInput.value.trim(),
-
-        status:"draft",
-
-        is_anonymous:document.getElementById("anonymous").checked,
-
-        has_attachment:document.getElementById("photo").files.length>0
-
-    });
-
+    
+        .from("letters")
+    
+        .insert({
+    
+            sender_id:session.user.id,
+    
+            recipient_id:recipient.id,
+    
+            title:titleInput.value.trim(),
+    
+            body:bodyInput.value.trim(),
+    
+            status:"draft",
+    
+            is_anonymous:anonymous.checked,
+    
+            has_attachment:photo.files.length>0
+    
+        })
+    
+        .select()
+    
+        .single();
+    
     if(error){
-
+    
         alert(error.message);
-
+    
         return false;
-
+    
     }
 
-    alert("Draft saved.");
+    if(!goToDrafts){
 
-    form.reset();
+        form.reset();
 
-    updateCounter();
+        updateCounter();
+
+    }
 
     return true;
 

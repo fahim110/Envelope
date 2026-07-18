@@ -4,9 +4,11 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Volunteer Mailman</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Volunteer Mailman | Envelope</title>
 
     <link rel="stylesheet" href="css/volunteer.css">
 
@@ -22,11 +24,86 @@
 
     <hr>
 
-    <div id="lettersContainer">
+    <!-- ====================================== -->
+    <!-- Waiting Letters -->
+    <!-- ====================================== -->
 
-        <p>Loading letters...</p>
+    <section>
 
-    </div>
+        <h2>
+
+            📮 Waiting at Post Office
+
+            (<span id="waitingCount">0</span>)
+
+        </h2>
+
+        <div id="waitingContainer">
+
+            <p>Loading...</p>
+
+        </div>
+
+    </section>
+
+    <br>
+
+    <hr>
+
+    <br>
+
+    <!-- ====================================== -->
+    <!-- Volunteer Bag -->
+    <!-- ====================================== -->
+
+    <section>
+
+        <h2>
+
+            🎒 My Mail Bag
+
+            (<span id="bagCount">0</span>/5)
+
+        </h2>
+
+        <div id="bagContainer">
+
+            <p>No claimed letters.</p>
+
+        </div>
+
+    </section>
+
+    <br>
+
+    <hr>
+
+    <br>
+
+    <!-- ====================================== -->
+    <!-- QR Scanner -->
+    <!-- ====================================== -->
+
+    <section>
+
+        <h2>
+
+            📷 Delivery Scanner
+
+        </h2>
+
+        <div id="reader"
+             style="width:320px;margin:auto;"></div>
+
+        <p id="scanStatus">
+
+            Camera idle.
+
+        </p>
+
+    </section>
+
+    <br>
 
     <button id="logoutBtn">
 
@@ -39,6 +116,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
 <script src="js/supabase.js"></script>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
 
 <script src="js/volunteer.js"></script>
 

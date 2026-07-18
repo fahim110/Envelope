@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>Envelope Central Post Office QR</title>
+
+<style>
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    text-align:center;
+
+    background:#f5efe4;
+
+    padding:50px;
+
+}
+
+#qrcode{
+
+    margin-top:30px;
+
+}
+
+h1{
+
+    margin-bottom:10px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>📮 Envelope</h1>
+
+<h2>Central Post Office</h2>
+
+<h3>Floor 6</h3>
+
+<div id="qrcode"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+<script>
+
+const qrData = JSON.stringify({
+
+    app:"Envelope",
+
+    version:1,
+
+    type:"post_office",
+
+    id:"floor6"
+
+});
+
+QRCode.toCanvas(
+
+    qrData,
+
+    {
+
+        width:260
+
+    },
+
+    function(err,canvas){
+
+        if(err){
+
+            console.log(err);
+
+            return;
+
+        }
+
+        document
+        .getElementById("qrcode")
+        .appendChild(canvas);
+
+    }
+
+);
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My QR | Envelope</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🪪 My Postal QR</h1>
+
+    <p>
+
+        Show this QR to a volunteer mailman to receive your letters.
+
+    </p>
+
+    <br>
+
+    <div id="qrcode" style="width:250px;margin:auto;"></div>
+
+    <br>
+
+    <h3 id="username"></h3>
+
+    <p id="status"></p>
+
+    <br>
+
+    <button onclick="window.location.href='dashboard.html'">
+
+        Back to Dashboard
+
+    </button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+<script src="js/supabase.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+
+<script src="js/myqr.js"></script>
+
+</body>
+
+</html>
