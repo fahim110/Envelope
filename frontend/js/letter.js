@@ -122,7 +122,8 @@ form.addEventListener("submit", async (e)=>{
 
     if(letterId){
 
-        window.location.href = `qr.html?letter=${letterId}`;
+        window.location.href =
+        `postoffice.html?letter=${letterId}`;
 
     }
 
@@ -138,8 +139,6 @@ async function saveDraft(goToDrafts){
 
     } = await window.supabaseClient.auth.getSession();
 
-    // Check draft count only for NEW letters
-
     const {count} = await window.supabaseClient
 
         .from("letters")
@@ -154,11 +153,9 @@ async function saveDraft(goToDrafts){
 
         alert("Maximum 5 drafts allowed.");
 
-        return data.id;
+        return null;
 
     }
-
-    // Find recipient
 
     const {
 
@@ -180,48 +177,48 @@ async function saveDraft(goToDrafts){
 
         alert("Recipient not found.");
 
-        return false;
+        return null;
 
     }
 
     const {
 
         data,
-    
+
         error
-    
+
     } = await window.supabaseClient
-    
+
         .from("letters")
-    
+
         .insert({
-    
+
             sender_id:session.user.id,
-    
+
             recipient_id:recipient.id,
-    
+
             title:titleInput.value.trim(),
-    
+
             body:bodyInput.value.trim(),
-    
+
             status:"draft",
-    
+
             is_anonymous:anonymous.checked,
-    
+
             has_attachment:photo.files.length>0
-    
+
         })
-    
+
         .select()
-    
+
         .single();
-    
+
     if(error){
-    
+
         alert(error.message);
-    
-        return false;
-    
+
+        return null;
+
     }
 
     if(!goToDrafts){
@@ -232,6 +229,6 @@ async function saveDraft(goToDrafts){
 
     }
 
-    return true;
+    return data.id;
 
 }
