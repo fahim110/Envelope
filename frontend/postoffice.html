@@ -5,11 +5,12 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Central Post Office</title>
 
-<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/postoffice.css">
 
 </head>
 
@@ -17,23 +18,45 @@
 
 <div class="container">
 
-<h1>📮</h1>
+    <h1>📮 Central Post Office</h1>
 
-<h2>Central Post Office</h2>
+    <p>
 
-<p>
+        You are about to deposit the following letter.
 
-Deposit your drafted letters here.
+    </p>
 
-</p>
+    <div class="letter-card">
 
-<div id="lettersContainer">
+        <h2 id="recipientName">
 
-Loading...
+            Loading...
+
+        </h2>
+
+        <p>
+
+            <b>Title:</b>
+
+            <span id="letterTitle"></span>
+
+        </p>
+
+    </div>
+
+    <button id="startScanner">
+
+        📷 Start Scanner
+
+    </button>
+
+    <div id="reader"></div>
+
+    <p id="status"></p>
 
 </div>
 
-</div>
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 

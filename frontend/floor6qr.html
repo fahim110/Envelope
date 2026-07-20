@@ -50,19 +50,17 @@ h1{
 
 <div id="qrcode"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 
 <script>
 
 const qrData = JSON.stringify({
 
-    app:"Envelope",
+    app: "Envelope",
 
-    version:1,
+    type: "post_office",
 
-    type:"post_office",
-
-    id:"floor6"
+    hub: "central_floor6"
 
 });
 
@@ -87,7 +85,9 @@ QRCode.toCanvas(
         }
 
         document
+
         .getElementById("qrcode")
+
         .appendChild(canvas);
 
     }
@@ -99,3 +99,4 @@ QRCode.toCanvas(
 </body>
 
 </html>
+
