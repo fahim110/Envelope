@@ -121,24 +121,25 @@ function startQRScanner(){
 
 async function qrSuccess(decodedText){
 
+    alert("RAW:\n" + decodedText);
+
     try{
 
-        const qr=JSON.parse(decodedText);
-        
-        console.log(qr);
-        alert(JSON.stringify(qr));
+        const qr = JSON.parse(decodedText);
+
+        alert("PARSED:\n" + JSON.stringify(qr,null,2));
 
         if(
 
-            qr.app!=="Envelope" ||
+            qr.app !== "Envelope" ||
 
-            qr.type!=="post_office" ||
+            qr.type !== "post_office" ||
 
-            qr.hub!=="central_floor6"
+            qr.hub !== "central_floor6"
 
         ){
 
-            status.innerHTML="❌ Invalid Central Post Office QR";
+            status.innerHTML = "❌ Invalid Central Post Office QR";
 
             return;
 
@@ -146,15 +147,17 @@ async function qrSuccess(decodedText){
 
         await qrScanner.stop();
 
-        status.innerHTML="✅ QR verified.";
+        status.innerHTML = "✅ QR verified.";
 
         await deposit();
 
     }
 
-    catch{
+    catch(err){
 
-        status.innerHTML="❌ Invalid QR Code";
+        alert(err);
+
+        status.innerHTML = "❌ Invalid QR Code";
 
     }
 
