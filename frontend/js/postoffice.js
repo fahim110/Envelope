@@ -121,13 +121,11 @@ function startQRScanner(){
 
 async function qrSuccess(decodedText){
 
-    alert("RAW:\n" + decodedText);
 
     try{
 
         const qr = JSON.parse(decodedText);
 
-        alert("PARSED:\n" + JSON.stringify(qr,null,2));
 
         if(
 
